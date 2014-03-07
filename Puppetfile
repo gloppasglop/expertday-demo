@@ -17,7 +17,7 @@ mod 'footballradar/python'
 mod 'garethr/graphite'
 mod 'jfryman/nginx'
 mod 'pdxcat', :git => 'https://github.com/pdxcat/puppet-module-collectd.git' 
-mod 'ploperations/bundler'
+mod 'bundler' , :git => 'https://github.com/puppetlabs-operations/puppet-bundler.git'
 mod 'apache' , :git => "https://github.com/puppetlabs/puppetlabs-apache"
 mod 'puppetlabs/apt'
 mod 'puppetlabs_apt', :git => 'https://github.com/puppetlabs-operations/puppet-puppetlabs_apt.git', :ref => '0.0.3'
