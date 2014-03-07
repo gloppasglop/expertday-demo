@@ -4,7 +4,6 @@ mod 'puppetlabs/passenger'
 
 mod 'puppet', :git => "https://github.com/puppetlabs-operations/puppet-puppet"
 
-#mod 'puppetlabs/puppetdb'
 mod 'puppetlabs/postgresql'
 mod 'puppetlabs/ruby'
 
