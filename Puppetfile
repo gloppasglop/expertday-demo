@@ -18,7 +18,7 @@ mod 'garethr/graphite'
 mod 'jfryman/nginx'
 mod 'pdxcat/collectd'
 mod 'ploperations/bundler'
-mod 'puppetlabs/apache'
+mod 'apache' , :git => "https://github.com/puppetlabs/puppetlabs-apache"
 mod 'puppetlabs/apt'
 mod 'ploperations/puppetlabs_apt'
 mod 'puppetlabs/concat'
