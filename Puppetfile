@@ -9,6 +9,8 @@ mod 'puppetlabs/ruby'
 
 mod 'puppetlabs/inifile'
 
+mod 'puppetlabs/puppetdb'
+
 mod 'puppetlabs/ntp'
 mod 'bfraser/gdash'
 mod 'footballradar/python'
