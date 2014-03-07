@@ -11,11 +11,12 @@ class site::roles::puppet::master {
     manifest           => '$confdir/environments/$environment/manifests/site.pp',
     servertype         => 'passenger',
     reports            => 'puppetdb',
-#    servername         => $::fqdn,
+    servername         => $::fqdn,
     config_version_cmd => false,
     monitor_server     => false,
     backup_server      => false,
     reporturl          => '',
+    ca                 => true,
     parser             => 'future',
   } ->
   class { 'puppetdb': } ->
