@@ -8,7 +8,7 @@ class site::roles::puppet::master {
 
   class { '::puppet::server':
     modulepath         => ['$confdir/environments/$environment/modules', '$confdir/environments/$environment/'],
-    manifest           => '$confdir/environments/$environment/manifests/site.pp',
+    manifest           => '$confdir/environments/$environment/site/manifests/site.pp',
     servertype         => 'passenger',
     reports            => 'puppetdb',
     servername         => $::fqdn,
