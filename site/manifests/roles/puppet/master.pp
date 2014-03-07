@@ -7,11 +7,11 @@ class site::roles::puppet::master {
   }
 
   class { '::puppet::server':
-    modulepath         => ['$confdir/modules'],
-    manifest           => '/etc/puppet/manifests/site.pp',
+    modulepath         => ['$confdir/environments/$environment/modules', '$confdir/environments/$environment/'],
+    manifest           => '$confdir/environments/$environment/manifests/site.pp',
     servertype         => 'passenger',
     reports            => 'puppetdb',
-    servername         => $::fqdn,
+#    servername         => $::fqdn,
     config_version_cmd => false,
     monitor_server     => false,
     backup_server      => false,
