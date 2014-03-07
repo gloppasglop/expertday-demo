@@ -18,12 +18,6 @@ class site::roles::puppet::master {
     reporturl          => '',
     parser             => 'future',
   } ->
-  class { '::puppet::agent':
-    server        => hiera('puppet_server'),
-    method        => 'service',
-    manage_repos  => false,
-  } ->
-
   class { 'puppetdb': } ->
   class { 'puppetdb::master::config': }
 
