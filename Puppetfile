@@ -20,7 +20,7 @@ mod 'pdxcat/collectd'
 mod 'ploperations/bundler'
 mod 'apache' , :git => "https://github.com/puppetlabs/puppetlabs-apache"
 mod 'puppetlabs/apt'
-mod 'puppetlabs_apt', :git => 'https://github.com/puppetlabs-operations/puppet-puppetlabs_apt.git', :ref => '0.3.0'
+mod 'puppetlabs_apt', :git => 'https://github.com/puppetlabs-operations/puppet-puppetlabs_apt.git', :ref => '0.0.3'
 mod 'puppetlabs/concat'
 mod 'puppetlabs/firewall'
 mod 'puppetlabs/nodejs'
