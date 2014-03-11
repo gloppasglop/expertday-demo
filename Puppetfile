@@ -16,7 +16,7 @@ mod 'bfraser/gdash'
 mod 'footballradar/python'
 mod 'garethr/graphite'
 mod 'jfryman/nginx'
-mod 'pdxcat', :git => 'https://github.com/pdxcat/puppet-module-collectd.git' 
+mod 'collectd', :git => 'https://github.com/pdxcat/puppet-module-collectd.git' 
 mod 'bundler' , :git => 'https://github.com/puppetlabs-operations/puppet-bundler.git'
 mod 'apache' , :git => "https://github.com/puppetlabs/puppetlabs-apache"
 mod 'puppetlabs/apt'
