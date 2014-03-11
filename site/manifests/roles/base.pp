@@ -6,4 +6,6 @@ class site::roles::base {
   }
 
   class { '::ntp': }
+
+  include site::profiles::collectd
 }
