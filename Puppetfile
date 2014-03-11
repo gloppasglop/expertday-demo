@@ -14,7 +14,7 @@ mod 'puppetdb', :git => "https://github.com/puppetlabs/puppetlabs-puppetdb.git"
 mod 'puppetlabs/ntp'
 mod 'bfraser/gdash'
 mod 'footballradar/python'
-mod 'garethr/graphite'
+mod 'graphite', :git => 'https://github.com/gloppasglop/garethr-graphite.git'
 mod 'jfryman/nginx'
 mod 'collectd', :git => 'https://github.com/pdxcat/puppet-module-collectd.git' 
 mod 'bundler' , :git => 'https://github.com/puppetlabs-operations/puppet-bundler.git'

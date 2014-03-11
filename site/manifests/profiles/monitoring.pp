@@ -1,7 +1,8 @@
-class site::profile::monitoring {
+class site::profiles::monitoring {
   include ::graphite
   include gdash
 
+  include apache
   include apache::mod::passenger
   $myvhosts = hiera('apache::vhosts', {})
   create_resources('apache::vhost', $myvhosts)
