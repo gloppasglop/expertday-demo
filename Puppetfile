@@ -12,7 +12,7 @@ mod 'puppetlabs/inifile'
 mod 'puppetdb', :git => "https://github.com/puppetlabs/puppetlabs-puppetdb.git"
 
 mod 'puppetlabs/ntp'
-mod 'bfraser/gdash'
+mod 'gdash', :git => 'https://github.com/gloppasglop/puppet-gdash.git'
 mod 'footballradar/python'
 mod 'graphite', :git => 'https://github.com/gloppasglop/garethr-graphite.git'
 mod 'jfryman/nginx'
