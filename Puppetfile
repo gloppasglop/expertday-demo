@@ -9,7 +9,7 @@ mod 'puppetlabs/ruby'
 
 mod 'puppetlabs/inifile'
 
-mod 'puppetdb', :git => "https://github.com/puppetlabs/puppetlabs-puppetdb.git"
+mod 'puppetdb', :git => "https://github.com/puppetlabs/puppetlabs-puppetdb.git", :ref => '0.11.0'
 
 mod 'puppetlabs/ntp'
 mod 'gdash', :git => 'https://github.com/gloppasglop/puppet-gdash.git'
