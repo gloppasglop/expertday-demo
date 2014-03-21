@@ -2,7 +2,7 @@ forge 'forge.puppetlabs.com'
 
 mod 'puppetlabs/passenger'
 
-mod 'puppet', :git => "https://github.com/puppetlabs-operations/puppet-puppet", :ref => '0.11.0
+mod 'puppet', :git => "https://github.com/puppetlabs-operations/puppet-puppet", :ref => '0.11.0'
 
 mod 'puppetlabs/postgresql'
 mod 'puppetlabs/ruby'
