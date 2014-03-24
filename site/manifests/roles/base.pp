@@ -5,7 +5,7 @@ class site::roles::base {
     require => Anchor['::site::roles::base'],
   }
 
-  notify {'Environment : $::environment': }
+  notify {"Environment : $::environment": }
   class { '::ntp': }
 
   include site::profiles::collectd
