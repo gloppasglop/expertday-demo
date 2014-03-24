@@ -14,7 +14,7 @@ class site::profiles::gdash::client {
    $graphite_fqdn = inline_template( "<%= @fqdn.gsub('.','_')  %>" )
 
    @@gdash::graph { "expertday_os_metric_load_${graphite_fqdn}":
-        name        => "Load Average ${graphite_fqdn}",
+        graph_title        => "Load Average ${graphite_fqdn}",
         area        => "none",
         vtitle      => "Load",
         description => "Load Average",
@@ -28,11 +28,21 @@ class site::profiles::gdash::client {
         scale       => 1,
         graph       => "expertday_os_metric_load_${graphite_fqdn}",
         color       => "red",
-        alias       => "Short Term (1 minute) ${hostname}",
+        legend_alias       => "Short Term (1 minute) ${hostname}",
         data        => "collectd.$graphite_fqdn.load.load.shortterm",
         category    => "Expertday",
         dashboard   => "OS_Metrics",
     }
 
+   @@gdash::field { "${graphite_fqdn}_load_midterm":
+        field_name  => "Load_Average_Medium",
+        scale       => 1,
+        graph       => "expertday_os_metric_load_${graphite_fqdn}",
+        color       => "yellow",
+        legend_alias       => "Medium Term (1 minute) ${hostname}",
+        data        => "collectd.$graphite_fqdn.load.load.midterm",
+        category    => "Expertday",
+        dashboard   => "OS_Metrics",
+    }
 
 }
