@@ -24,7 +24,7 @@ class site::profiles::gdash::client {
     }
 
    @@gdash::field { "${graphite_fqdn}_load_shortterm":
-        field_name  => "Load Average Short"
+        field_name  => "Load Average Short",
         scale       => 1,
         graph       => "expertday_os_metric_load_${graphite_fqdn}",
         color       => "red",
