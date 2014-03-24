@@ -14,7 +14,7 @@ class site::profiles::gdash::client {
    $graphite_fqdn = inline_template( "<%= @fqdn.gsub('.','_')  %>" )
 
    @@gdash::graph { "expertday_os_metric_load_${graphite_fqdn}":
-        name        => "Load Average ${graphite_fqdn}",
+        graph_title        => "Load Average ${graphite_fqdn}",
         area        => "none",
         vtitle      => "Load",
         description => "Load Average",
