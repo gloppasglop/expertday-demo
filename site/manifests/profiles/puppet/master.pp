@@ -17,7 +17,6 @@ class site::profiles::puppet::master {
     reporturl          => '',
     ca                 => true,
     parser             => 'future',
-    alt_dns_names      => 'puppet.gloppasglop.com',
   } ->
   class { 'puppetdb': } ->
   class { 'puppetdb::master::config': }
