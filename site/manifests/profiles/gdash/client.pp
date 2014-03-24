@@ -34,5 +34,15 @@ class site::profiles::gdash::client {
         dashboard   => "OS_Metrics",
     }
 
+   @@gdash::field { "${graphite_fqdn}_load_midterm":
+        field_name  => "Load_Average_Medium",
+        scale       => 1,
+        graph       => "expertday_os_metric_load_${graphite_fqdn}",
+        color       => "yellow",
+        alias       => "Medium Term (1 minute) ${hostname}",
+        data        => "collectd.$graphite_fqdn.load.load.midterm",
+        category    => "Expertday",
+        dashboard   => "OS_Metrics",
+    }
 
 }
