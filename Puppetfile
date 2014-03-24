@@ -27,3 +27,9 @@ mod 'puppetlabs/nodejs'
 mod 'puppetlabs/stdlib'
 mod 'puppetlabs/vcsrepo'
 mod 'richardc/datacat'
+
+#mod 'monitoring', :git => "https://github.com/abstractitptyltd/puppet-monitoring.git", :ref => '1.2.2'
+mod 'icinga', :git => "https://github.com/abstractitptyltd/puppet-icinga.git", :ref => 'v1.2.0'
+mod 'pnp4nagios', :git => "https://github.com/abstractitptyltd/puppet-pnp4nagios.git", :ref => 'v0.1.1'
+
+
