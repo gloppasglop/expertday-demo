@@ -33,7 +33,7 @@ class site::profiles::monitoring {
         require     => Gdash::Category["Expertday"],
   }
 
-  gdash::dashboard { "Web_Server_Metrics":
+  gdash::dashboard { "Web_Metrics":
         description => "Web Server Metrics",
         category    => "Expertday",
         require     => Gdash::Category["Expertday"],
