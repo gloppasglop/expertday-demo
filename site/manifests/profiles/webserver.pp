@@ -21,7 +21,7 @@ class site::profiles::webserver {
     }
 
    @@gdash::field { "${tmp_fqdn}_http_reqs":
-        field_name    => "requests/s",
+        field_name    => "requests",
         scale         => 1,
         graph         => "expertday_web_metric_requests_${tmp_fqdn}",
         color         => "red",
