@@ -14,6 +14,14 @@ During this demo you will:
 
 This demo is based on [Exoscale cloud platform](https://www.exoscale.ch/open-cloud/compute/).
 
+# Pre-requisites
+
+This demo assumes that you have access to a DNS server and are able to create DNS records for Puppet Master anf Graphite servers:
+
+* puppet.<yourdomain>
+* monitoring.<yourdomain>
+
+
 # Security groups
 
 For this demo, some Firewall rules needs to be created in the Exoscale Portal.
@@ -29,9 +37,7 @@ For this demo, some Firewall rules needs to be created in the Exoscale Portal.
 | **expertday-http**          | All                    | TCP      | 80     | HTTP port for Web nodes |
 
 
-
 # Install Puppet Master
-
 
 ## Start a new instance 
 
@@ -48,7 +54,14 @@ Before creating the instance, make sure you go on the *User data* Tab and enter 
 
     #cloud-config
     manage_etc_hosts: True
-    fqdn: puppet.expertday.demo
+    fqdn: puppet.<yourdomain>
+
+Replace <yourdomain> with your own domain name.
+
+## Create DNS record
+
+Once the VM has started, check the IP address of the new VM and create a DNS record like puppet.<yourdomain> 
+
 
 ## Install Puppet
 
@@ -107,30 +120,38 @@ Create the hiera directories:
 
 Edit /etc/puppet/hiera/common.yaml
 
-    puppet::agent::server: puppet.example.com
-    puppet:server::dns_alt_names: puppet.example.com
-    puppetdb::ssl_listen_address: puppet.gloppasglop.com
+```YAML
+---
+puppet::agent::server: puppet.<yourdomain>
+puppet:server::dns_alt_names: puppet.<yourdomain>
+puppetdb::ssl_listen_address: puppet.<yourdomain>
 
-    #collectd::plugin::write_graphite::graphitehost: 192.168.4.140
-    #collectd::version: latest
-    #gdash::graphite_host: http://192.168.4.140
+collectd::plugin::write_graphite::graphitehost: monitoring.<yourdomain>
+gdash::graphite_host: http://monitoring.<yourdomain>
 
+classes:
+  - site::roles:base
+```
 
 Configure puppet master:
 
-     puppet apply --certname=puppet.gloppasglop.com --modulepath=/etc/puppet/environments/production:/etc/puppet/environments/production/modules -e 'include site::profiles::puppet::master'
+     puppet apply --certname=puppet.<yourdomain> --modulepath=/etc/puppet/environments/production:/etc/puppet/environments/production/modules -e 'include site::profiles::puppet::master'
 
 This will install and configure puppet master with passenger and puppetdb.
 
 # Install monitoring server (Graphite)
 
+Create the same type of instance as for the Puppet Master.
 
-AGENT
+Just change the user data part to:
 
     #cloud-config
     manage_etc_hosts: True
-    fqdn: monitoring.expertday.demo
+    fqdn: monitoring.<yourdomain>
 
+When the server has started, get the IP address of the VM and update your DNS server to add a DNS record monitoring.<yourdomain>
+
+Install puppet agent:
 
     wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
     dpkg -i puppetlabs-release-precise.deb 
@@ -140,8 +161,6 @@ AGENT
     apt-get install -y puppet
 
 
-    collectd::plugin::write_graphite::graphitehost: monitoring.expertday.demo
-    gdash::graphite_host: http://moniroring.expertday.demo
 
     classes:
        - site::profiles::monitoring
