@@ -6,7 +6,7 @@ This can be used to reproduce the demo that was presented during the **Industria
 During this demo you will:
 
 * Create a Puppet Master
-* Create a Puppet managed Graphite server with a Gdash Graphite Dashboard
+* Create a Puppet managed [Graphite](http://graphite.wikidot.com) server with a [Gdash Graphite Dashboard](https://github.com/ripienaar/gdash) 
 * Create Puppet managed nodes that will automatically collect some metrics using Collectd, send them to Graphite server and register in GDash. 
 * The gathered metrics depends on the node roles. 
   * Standard nodes gather CPU load metrics
@@ -32,19 +32,42 @@ For this demo, some Firewall rules needs to be created in the Exoscale Portal.
 
 # Install Puppet Master
 
-Linux Ubuntu 12.04 64-bit
 
-    wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
-    dpkg -i puppetlabs-release-precise.deb 
+## Start a new instance 
+
+Start an Exoscale Linux instance using the following parameters:
+
+|                 |                               |
+| --------------- | ----------------------------- |
+| OS Template     | Linux Ubuntu 12.04 LTS 64-bit |
+| Type            | Medium |
+| Disk Size       | 50 GB |
+| Security Groups | expertday-puppetmaster, expertday-ssh |
+
+Before creating the instance, make sure you go on the *User data* Tab and enter the following user data: 
+
+    #cloud-config
+    manage_etc_hosts: True
+    fqdn: puppet.expertday.demo
+
+## Install Puppet
+
+    sudo wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
+    sudo dpkg -i puppetlabs-release-precise.deb 
 
     sudo apt-get update
+    sudo apt-get install -y puppet 
 
-    apt-get install -y puppet git
-    apt-get install -y rubygems
-    gem install r10k
-    gem install deep_merge
+## Install Additional packages
 
-## Edit /etc/r10k.yaml
+    sudo apt-get install -y git rubygems
+    sudo gem install deep_merge
+
+## Install and configure r10k
+
+    sudo gem install r10k
+
+Create r10k configuration file /etc/r10k.yaml with following content
 
     ---
     :cachedir: /var/cache/r10k
@@ -53,16 +76,16 @@ Linux Ubuntu 12.04 64-bit
         remote: https://github.com/gloppasglop/expertday-demo.git
         basedir: /etc/puppet/environments
 
-Install modules
+
+Run the following command to deploy the Puppet modules required for the demo. 
 
     r10k deploy environment -p --verbose
 
-Configure Hiera
+
+## Configure Hiera
 
 
-    rm /etc/hiera.yaml
-
-Edit /etc/puppet/hiera.yaml
+Edit /etc/puppet/hiera.yaml with the following content:
 
     ---
     :backends:
@@ -77,9 +100,7 @@ Edit /etc/puppet/hiera.yaml
           
     :merge_behavior: deeper
 
-Link
-
-   ln -s /etc/puppet/hiera.yaml /etc/hiera.yaml
+Create the hiera directories:
 
     mkdir /etc/puppet/hiera
     mkdir /etc/puppet/hiera/nodes
@@ -98,6 +119,11 @@ Edit /etc/puppet/hiera/common.yaml
 Configure puppet master:
 
      puppet apply --certname=puppet.gloppasglop.com --modulepath=/etc/puppet/environments/production:/etc/puppet/environments/production/modules -e 'include site::profiles::puppet::master'
+
+This will install and configure puppet master with passenger and puppetdb.
+
+# Install monitoring server (Graphite)
+
 
 AGENT
 
