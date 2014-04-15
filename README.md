@@ -100,18 +100,20 @@ Run the following command to deploy the Puppet modules required for the demo.
 
 Edit /etc/puppet/hiera.yaml with the following content:
 
-    ---
-    :backends:
-      - yaml
-    
-    :hierarchy:
-      - nodes/%{::fqdn}
-      - "common"
-    
-    :yaml:
-      :datadir: /etc/puppet/hiera
-          
-    :merge_behavior: deeper
+```YAML
+---
+:backends:
+  - yaml    
+
+:hierarchy:
+  - nodes/%{::fqdn}
+  - "common"
+
+:yaml:
+:datadir: /etc/puppet/hiera
+
+:merge_behavior: deeper
+```
 
 Create the hiera directories:
 
