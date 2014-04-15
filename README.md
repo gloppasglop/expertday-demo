@@ -100,7 +100,7 @@ Run the following command to deploy the Puppet modules required for the demo.
 
 Edit /etc/puppet/hiera.yaml with the following content:
 
-```YAML
+```yaml
 ---
 :backends:
   - yaml    
@@ -122,7 +122,7 @@ Create the hiera directories:
 
 Edit /etc/puppet/hiera/common.yaml
 
-```YAML
+```yaml
 ---
 puppet::agent::server: puppet.<yourdomain>
 puppet:server::dns_alt_names: puppet.<yourdomain>
@@ -157,9 +157,9 @@ Install puppet agent:
 
     wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
     dpkg -i puppetlabs-release-precise.deb 
-
+    
     sudo apt-get update
-
+    
     apt-get install -y puppet
 
 
