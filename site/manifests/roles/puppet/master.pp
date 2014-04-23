@@ -16,7 +16,6 @@ class site::roles::puppet::master {
     monitor_server     => false,
     backup_server      => false,
     reporturl          => '',
-    parser             => 'future',
   } ->
   class { '::puppet::agent':
     server        => hiera('puppet_server'),
