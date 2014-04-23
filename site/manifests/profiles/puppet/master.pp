@@ -16,7 +16,6 @@ class site::profiles::puppet::master {
     backup_server      => false,
     reporturl          => '',
     ca                 => true,
-    parser             => 'future',
   } ->
   class { 'puppetdb': } ->
   class { 'puppetdb::master::config': }
