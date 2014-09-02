@@ -1,4 +1,5 @@
 class site::roles::puppet::master {
+<<<<<<< HEAD
 
   anchor { '::site::roles::puppet::master': }
 
@@ -26,5 +27,9 @@ class site::roles::puppet::master {
   class { 'puppetdb': } ->
   class { 'puppetdb::master::config': }
 
+=======
+  include site::profiles::puppet::master
+  include site::profiles::collectd
+  include site::profiles::gdash::client
+>>>>>>> production
 }
-

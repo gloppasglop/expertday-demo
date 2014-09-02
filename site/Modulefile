@@ -1,0 +1,8 @@
+name    'expertday-demo'
+version '0.3.0'
+source 'https://github.com/gloppasglop/expertday-demo.git'
+author 'Christophe Roux
+license 'Apache License, Version 2.0'
+summary 'Site module for Expertday demo'
+description 'Site module used during expertday demo'
+project_page 'https://github.com/gloppasglop/expertday-demo.git'
