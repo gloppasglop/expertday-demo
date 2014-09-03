@@ -27,3 +27,6 @@ mod 'puppetlabs/nodejs'
 mod 'puppetlabs/stdlib'
 mod 'puppetlabs/vcsrepo'
 mod 'richardc/datacat'
+
+mod 'elasticsearch', :git => 'https://github.com/elasticsearch/puppet-elasticsearch.git'
+mod 'grafana', :git => 'https://github.com/bfraser/puppet-grafana.git'
