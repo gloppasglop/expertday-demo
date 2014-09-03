@@ -30,3 +30,4 @@ mod 'richardc/datacat'
 
 mod 'elasticsearch', :git => 'https://github.com/elasticsearch/puppet-elasticsearch.git'
 mod 'grafana', :git => 'https://github.com/bfraser/puppet-grafana.git'
+mod 'archive', :git => 'https://github.com/gini/puppet-archive.git'
